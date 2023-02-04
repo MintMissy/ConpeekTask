@@ -5,7 +5,6 @@ import { AuthenticationService } from './authentication-service.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class RestAuthenticationServiceService implements AuthenticationService {
-
-  constructor(private httpClient: HttpClient) { }
+export class AuthenticationServiceImpl implements AuthenticationService  {
+	constructor(private httpClient: HttpClient) {}
 }

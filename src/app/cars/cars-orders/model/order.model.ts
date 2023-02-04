@@ -2,8 +2,8 @@ export type Order = {
 	fromDate: Date;
 	toDate: Date;
 	clientId: number;
-	notes: string;
 	hasPaid: boolean;
+	comment: string;
 };
 
 export type CarOrder = Order & {
