@@ -1,20 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-import * as fromUsers from './state/users.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { Sha256EncryptService } from './service/sha256-encrypt.service';
 import { UsersEffects } from './state/users.effects';
-
-
+import * as fromUsers from './state/users.reducer';
+import { EncryptService } from './service/encrypt-service.interface';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    StoreModule.forFeature(fromUsers.usersFeatureKey, fromUsers.reducer),
-    EffectsModule.forFeature([UsersEffects])
-  ]
+	declarations: [],
+	imports: [
+		CommonModule,
+		HttpClientModule,
+		StoreModule.forFeature(fromUsers.usersFeatureKey, fromUsers.reducer),
+		EffectsModule.forFeature([UsersEffects]),
+	],
+	providers: [{ provide: EncryptService, useClass: Sha256EncryptService }],
 })
-export class UsersModule { }
+export class UsersModule {}
