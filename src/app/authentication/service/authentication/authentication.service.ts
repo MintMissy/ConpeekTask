@@ -2,7 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { EncryptService } from '../encrypt/encrypt-service.interface';
-import { AuthenticationService, LoginCredentials, LoginResponse, NonceResponse } from './authentication-service.interface';
+import {
+	AuthenticationService,
+	LoginCredentials,
+	LoginResponse,
+	NonceResponse
+} from './authentication-service.interface';
 
 @Injectable()
 export class AuthenticationServiceImpl implements AuthenticationService {
@@ -24,6 +29,11 @@ export class AuthenticationServiceImpl implements AuthenticationService {
 		return this.httpClient
 			.post<LoginResponse>(`${this.API_URL}/login`, payload)
 			.pipe(tap((response) => this.saveToken('')));
+	}
+
+	isLoggedIn(): boolean {
+		// TODO implement is logged in
+		return true;
 	}
 
 	getToken(): string | null {

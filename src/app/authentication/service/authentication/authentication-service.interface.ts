@@ -8,7 +8,9 @@ export type LoginCredentials = {
 export type NonceResponse = {
 	nonce: string;
 };
-export type LoginResponse = {};
+export type LoginResponse = {
+	token: string;
+};
 
 export abstract class AuthenticationService {
 	abstract getNonce(credentials: LoginCredentials): Observable<NonceResponse>;
@@ -18,4 +20,6 @@ export abstract class AuthenticationService {
 	abstract logout(): Observable<void>;
 
 	abstract getToken(): string | null;
+
+	abstract isLoggedIn(): boolean;
 }
