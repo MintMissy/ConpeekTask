@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { LoginCredentials } from '../../model/user.model';
 import { EncryptService } from '../encrypt/encrypt-service.interface';
 import { AuthenticationService, LoginResponse, NonceResponse } from './authentication-service.interface';
@@ -23,6 +23,17 @@ export class AuthenticationServiceImpl implements AuthenticationService {
 
 		const payload = { login: credentials.email, password: encryptedPassword };
 
-		return this.httpClient.post<LoginResponse>(`${this.API_URL}/login`, payload);
+		// TODO get token from response
+		return this.httpClient
+			.post<LoginResponse>(`${this.API_URL}/login`, payload)
+			.pipe(tap((response) => this.saveToken('')));
+	}
+
+	getToken(): string | null {
+		return localStorage.getItem('token');
+	}
+
+	saveToken(token: string): void {
+		localStorage.getItem('token');
 	}
 }

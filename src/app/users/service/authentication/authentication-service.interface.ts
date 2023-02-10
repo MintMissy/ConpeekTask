@@ -10,4 +10,6 @@ export abstract class AuthenticationService {
 	abstract getNonce(credentials: LoginCredentials): Observable<NonceResponse>;
 
 	abstract login(credentials: LoginCredentials, nonce: string): Observable<LoginResponse>;
+
+	abstract getToken(): string | null;
 }
