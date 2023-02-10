@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { EncryptService } from './service/encrypt/encrypt-service.interface';
-import { Sha256EncryptService } from './service/sha256-encrypt.service';
+import { Sha256EncryptService } from './service/encrypt/sha256-encrypt.service';
 import { UsersEffects } from './state/users.effects';
 import * as fromUsers from './state/users.reducer';
 
