@@ -36,4 +36,8 @@ export class AuthenticationServiceImpl implements AuthenticationService {
 	saveToken(token: string): void {
 		localStorage.getItem('token');
 	}
+
+	logout(): Observable<void> {
+		return this.httpClient.post<void>(`${this.API_URL}/logout`, {});
+	}
 }
