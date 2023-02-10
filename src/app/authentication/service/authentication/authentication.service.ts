@@ -1,13 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { LoginCredentials } from '../../model/user.model';
 import { EncryptService } from '../encrypt/encrypt-service.interface';
-import { AuthenticationService, LoginResponse, NonceResponse } from './authentication-service.interface';
+import { AuthenticationService, LoginCredentials, LoginResponse, NonceResponse } from './authentication-service.interface';
 
-@Injectable({
-	providedIn: 'root',
-})
+@Injectable()
 export class AuthenticationServiceImpl implements AuthenticationService {
 	readonly API_URL = 'https://api-carrental.nightly.conpeek.com/user';
 

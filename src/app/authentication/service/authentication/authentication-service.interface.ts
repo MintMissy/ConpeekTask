@@ -1,5 +1,9 @@
 import { Observable } from 'rxjs';
-import { LoginCredentials } from '../../model/user.model';
+
+export type LoginCredentials = {
+	email: string;
+	password: string;
+};
 
 export type NonceResponse = {
 	nonce: string;
@@ -11,7 +15,7 @@ export abstract class AuthenticationService {
 
 	abstract login(credentials: LoginCredentials, nonce: string): Observable<LoginResponse>;
 
-	abstract logout():Observable<void>;
+	abstract logout(): Observable<void>;
 
 	abstract getToken(): string | null;
 }
